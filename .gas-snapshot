@@ -1,2 +1,6 @@
-Tester:test(string) (runs: 256, μ: 47790, ~: 24790)
-TesterTest:testTest() (gas: 29940)
+CoinbaseOnEthereumTest:testCreate() (gas: 178446)
+CoinbaseOnEthereumTest:testSendDai() (gas: 42306)
+CoinbaseOnEthereumTest:testSendETH() (gas: 20531)
+NaniOnEthereumTest:testCreate() (gas: 99783)
+NaniOnEthereumTest:testSendDai() (gas: 41800)
+NaniOnEthereumTest:testSendETH() (gas: 20287)
