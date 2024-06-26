@@ -23,6 +23,7 @@ contract NaniOnEthereumTest is Test {
 
     address constant z = 0x1C0Aa8cCD568d90d61659F060D1bFb1e6f855A20;
     address constant dai = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
+    address constant usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
 
     IExecute account;
 
@@ -33,6 +34,8 @@ contract NaniOnEthereumTest is Test {
         assert(ok);
         vm.prank(z);
         IERC20(dai).transfer(address(account), 1 ether);
+        vm.prank(z);
+        IERC20(usdc).transfer(address(account), 10 ** 6);
     }
 
     function testCreate() public payable {
@@ -43,9 +46,15 @@ contract NaniOnEthereumTest is Test {
         account.execute(address(this), 0.001 ether, "");
     }
 
-    function testSendDai() public payable {
+    function testSendDAI() public payable {
         account.execute(
             dai, 0, abi.encodeWithSelector(IERC20.transfer.selector, address(this), 1 ether)
+        );
+    }
+
+    function testSendUSDC() public payable {
+        account.execute(
+            usdc, 0, abi.encodeWithSelector(IERC20.transfer.selector, address(this), 10 ** 6)
         );
     }
 
